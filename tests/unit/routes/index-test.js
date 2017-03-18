@@ -5,7 +5,11 @@ moduleFor('route:index', 'Unit | Route | index', {
   // needs: ['controller:foo']
 });
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+test('transitions to /urls', function(assert) {
+  let route = this.subject({
+    replaceWith(routeName) {
+      assert.equal(routeName, 'urls');
+    }
+  });
+  route.beforeModel();
 });
