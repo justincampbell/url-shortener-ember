@@ -6,13 +6,15 @@
 
 <h3>Shortened URLs</h3>
 
-<ul>
-  <li>
-    <div>
-      <a href="/g/abc123">ur.ls/g/abc123</a>
-    </div>
-    <div>
-      <a href="http://justincampbell.me">http://justincampbell.me</a>
-    </div>
-  </li>
-</ul>
+{{#each model as |url|}}
+  <ul>
+    <li>
+      <div>
+        <a href="/g/{{url.short}}">ur.ls/{{url.short}}</a>
+      </div>
+      <div>
+        <a href="{{url.long}}">{{url.long}}</a>
+      </div>
+    </li>
+  </ul>
+{{/each}}
