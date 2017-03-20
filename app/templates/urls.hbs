@@ -2,7 +2,10 @@
 
 <h3>Shorten a URL</h3>
 
-{{input value=value placeholder="Paste a URL here"}}
+{{input
+  enter=(action 'shortenUrl')
+  value=value
+  placeholder="Paste a URL here"}}
 
 <h3>Shortened URLs</h3>
 
@@ -10,10 +13,14 @@
   <ul>
     <li>
       <div>
-        <a href="/g/{{url.short}}">ur.ls/{{url.short}}</a>
+        {{#if url.isSaving}}
+          Saving...
+        {{else}}
+          <a href="{{url.shortUrl}}">{{url.shortDisplay}}</a>
+        {{/if}}
       </div>
       <div>
-        <a href="{{url.long}}">{{url.long}}</a>
+        <a href="{{url.long}}">{{url.longDisplay}}</a>
       </div>
     </li>
   </ul>
